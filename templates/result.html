@@ -1,43 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Prediction Result</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
 <div class="result-container">
 
-    <h1>Credit Card Approval Prediction</h1>
+    <h1>💳 Credit Card Approval Prediction</h1>
 
     {% if prediction == "✅ Credit Card Approved" %}
 
-        <div class="success">
+        <div class="success-box">
+
             <h2>{{ prediction }}</h2>
-            <p>Congratulations! Based on the provided details, the applicant is eligible for credit card approval.</p>
+
+            <p>
+                Congratulations! Based on the information provided,
+                the applicant is likely to receive a Credit Card.
+            </p>
+
+            <div class="probability">
+
+                <h3>Approval Probability</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar success"
+                         style="width: {{ approved }}%;">
+
+                        {{ approved }}%
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="probability">
+
+                <h3>Rejection Probability</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar danger"
+                         style="width: {{ rejected }}%;">
+
+                        {{ rejected }}%
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     {% elif prediction == "❌ Credit Card Rejected" %}
 
-        <div class="danger">
+        <div class="danger-box">
+
             <h2>{{ prediction }}</h2>
-            <p>Based on the provided information, the application is predicted to be rejected.</p>
+
+            <p>
+                Based on the applicant's financial information,
+                the Credit Card application is predicted to be rejected.
+            </p>
+
+            <div class="probability">
+
+                <h3>Approval Probability</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar success"
+                         style="width: {{ approved }}%;">
+
+                        {{ approved }}%
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="probability">
+
+                <h3>Rejection Probability</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar danger"
+                         style="width: {{ rejected }}%;">
+
+                        {{ rejected }}%
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     {% else %}
 
-        <div class="error">
+        <div class="error-box">
+
             <h2>{{ prediction }}</h2>
 
-            {% if error %}
-                <p>{{ error }}</p>
-            {% else %}
-                <p>Something went wrong while processing your request.</p>
-            {% endif %}
+            <p>{{ error }}</p>
+
         </div>
 
     {% endif %}
@@ -45,10 +127,17 @@
     <br>
 
     <a href="/">
-        <button class="btn">Predict Another Application</button>
+
+        <button class="btn">
+
+            🔄 Predict Another Application
+
+        </button>
+
     </a>
 
 </div>
 
 </body>
+
 </html>
