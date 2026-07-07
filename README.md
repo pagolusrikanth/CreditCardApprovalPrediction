@@ -206,7 +206,7 @@ screenshots/reject.png
 
 ## 👨‍💻 Author
 
-**Srikanth Pagolu**
+**Pagolu Srikanth**
 
 M.Tech (Computer Science)
 
