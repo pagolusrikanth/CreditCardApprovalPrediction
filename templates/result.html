@@ -3,138 +3,156 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Prediction Result</title>
+<title>Prediction Result</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="result-container">
+<div class="result-page">
 
-    <h1>💳 Credit Card Approval Prediction</h1>
+<div class="result-card">
 
-    {% if prediction == "✅ Credit Card Approved" %}
+<div class="top">
 
-        <div class="success-box">
+<div class="icon">
 
-            <h2>{{ prediction }}</h2>
+{% if prediction=="✅ Credit Card Approved" %}
 
-            <p>
-                Congratulations! Based on the information provided,
-                the applicant is likely to receive a Credit Card.
-            </p>
+<i class="fa-solid fa-circle-check"></i>
 
-            <div class="probability">
+{% elif prediction=="❌ Credit Card Rejected" %}
 
-                <h3>Approval Probability</h3>
+<i class="fa-solid fa-circle-xmark"></i>
 
-                <div class="progress">
+{% else %}
 
-                    <div class="progress-bar success"
-                         style="width: {{ approved }}%;">
+<i class="fa-solid fa-circle-exclamation"></i>
 
-                        {{ approved }}%
+{% endif %}
 
-                    </div>
+</div>
 
-                </div>
+<h1>Credit Card Approval Prediction</h1>
 
-            </div>
+<p>Machine Learning Decision Result</p>
 
-            <div class="probability">
+</div>
 
-                <h3>Rejection Probability</h3>
+{% if prediction=="✅ Credit Card Approved" %}
 
-                <div class="progress">
+<div class="status approved">
 
-                    <div class="progress-bar danger"
-                         style="width: {{ rejected }}%;">
+{{ prediction }}
 
-                        {{ rejected }}%
+</div>
 
-                    </div>
+<p class="message">
 
-                </div>
+Congratulations! The applicant satisfies the required conditions
+and is likely to receive a credit card.
 
-            </div>
+</p>
 
-        </div>
+{% elif prediction=="❌ Credit Card Rejected" %}
 
-    {% elif prediction == "❌ Credit Card Rejected" %}
+<div class="status rejected">
 
-        <div class="danger-box">
+{{ prediction }}
 
-            <h2>{{ prediction }}</h2>
+</div>
 
-            <p>
-                Based on the applicant's financial information,
-                the Credit Card application is predicted to be rejected.
-            </p>
+<p class="message">
 
-            <div class="probability">
+Unfortunately, based on the supplied information,
+the applicant is predicted to be rejected.
 
-                <h3>Approval Probability</h3>
+</p>
 
-                <div class="progress">
+{% else %}
 
-                    <div class="progress-bar success"
-                         style="width: {{ approved }}%;">
+<div class="status error">
 
-                        {{ approved }}%
+Prediction Error
 
-                    </div>
+</div>
 
-                </div>
+<p class="message">
 
-            </div>
+{{ error }}
 
-            <div class="probability">
+</p>
 
-                <h3>Rejection Probability</h3>
+{% endif %}
 
-                <div class="progress">
+<div class="progress-box">
 
-                    <div class="progress-bar danger"
-                         style="width: {{ rejected }}%;">
+<div class="progress-title">
 
-                        {{ rejected }}%
+<span>Approval Probability</span>
 
-                    </div>
+<span>{{ approved }}%</span>
 
-                </div>
+</div>
 
-            </div>
+<div class="progress">
 
-        </div>
+<div class="progress-fill success"
 
-    {% else %}
+style="width:{{ approved }}%">
 
-        <div class="error-box">
+</div>
 
-            <h2>{{ prediction }}</h2>
+</div>
 
-            <p>{{ error }}</p>
+</div>
 
-        </div>
+<div class="progress-box">
 
-    {% endif %}
+<div class="progress-title">
 
-    <br>
+<span>Rejection Probability</span>
 
-    <a href="/">
+<span>{{ rejected }}%</span>
 
-        <button class="btn">
+</div>
 
-            🔄 Predict Another Application
+<div class="progress">
 
-        </button>
+<div class="progress-fill danger"
 
-    </a>
+style="width:{{ rejected }}%">
+
+</div>
+
+</div>
+
+</div>
+
+<a href="/">
+
+<button class="predict-btn">
+
+<i class="fa-solid fa-arrow-rotate-left"></i>
+
+Predict Another Applicant
+
+</button>
+
+</a>
+
+</div>
 
 </div>
 

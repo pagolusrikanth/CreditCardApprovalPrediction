@@ -1,367 +1,1797 @@
-/* ===============================
-   Credit Card Approval Prediction
-   style.css
-================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
 
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:30px;
+background:linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#06b6d4);
+background-size:400% 400%;
+animation:bgAnimation 15s ease infinite;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
 
 }
 
+@keyframes bgAnimation{
 
-/*==========================
-Container
-==========================*/
-
-.container{
-
-    width:900px;
-
-    background:#ffffff;
-
-    padding:40px;
-
-    border-radius:15px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 
 }
 
+.bg-circle{
 
-.result-container{
-
-    width:700px;
-
-    background:#ffffff;
-
-    padding:40px;
-
-    border-radius:15px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
-
-    text-align:center;
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+opacity:.35;
 
 }
 
+.bg-circle.one{
 
-/*==========================
-Heading
-==========================*/
-
-h1{
-
-    text-align:center;
-
-    color:#0b4f8a;
-
-    margin-bottom:10px;
+width:350px;
+height:350px;
+background:#3b82f6;
+top:-120px;
+left:-120px;
 
 }
 
+.bg-circle.two{
 
-.subtitle{
-
-    text-align:center;
-
-    color:#555;
-
-    margin-bottom:30px;
-
-}
-
-
-/*==========================
-Rows
-==========================*/
-
-.row{
-
-    display:flex;
-
-    gap:20px;
-
-    margin-bottom:18px;
+width:350px;
+height:350px;
+background:#06b6d4;
+bottom:-100px;
+right:-100px;
 
 }
 
+.main-container{
 
-.input-box{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-}
-
-
-label{
-
-    font-weight:bold;
-
-    margin-bottom:8px;
-
-    color:#333;
+width:95%;
+max-width:1450px;
+margin:40px auto;
+display:grid;
+grid-template-columns:420px 1fr;
+gap:35px;
+align-items:flex-start;
 
 }
 
+.left-panel{
 
-/*==========================
-Inputs
-==========================*/
-
-input,
-select{
-
-    padding:12px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
-
-    font-size:15px;
-
-    transition:.3s;
+color:white;
+padding:40px;
 
 }
 
+.logo{
 
-input:focus,
-select:focus{
-
-    outline:none;
-
-    border-color:#4facfe;
-
-    box-shadow:0 0 8px rgba(79,172,254,.4);
+font-size:26px;
+font-weight:700;
+margin-bottom:60px;
 
 }
 
+.logo i{
 
-/*==========================
-Button
-==========================*/
-
-.btn,
-button{
-
-    width:100%;
-
-    padding:14px;
-
-    margin-top:20px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#007BFF;
-
-    color:#fff;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+margin-right:10px;
+color:#ffd54f;
 
 }
 
+.left-panel h1{
 
-.btn:hover,
-button:hover{
-
-    background:#0056b3;
-
-}
-
-
-/*==========================
-Result Boxes
-==========================*/
-
-.success-box{
-
-    background:#d4edda;
-
-    border-left:8px solid #28a745;
-
-    padding:25px;
-
-    border-radius:10px;
-
-    margin-top:20px;
+font-size:48px;
+line-height:1.15;
+margin-bottom:25px;
 
 }
 
+.left-panel p{
 
-.danger-box{
-
-    background:#f8d7da;
-
-    border-left:8px solid #dc3545;
-
-    padding:25px;
-
-    border-radius:10px;
-
-    margin-top:20px;
+font-size:18px;
+line-height:1.8;
+opacity:.9;
+margin-bottom:40px;
 
 }
 
+.feature-box{
 
-.error-box{
-
-    background:#fff3cd;
-
-    border-left:8px solid #ffc107;
-
-    padding:25px;
-
-    border-radius:10px;
-
-    margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:18px;
 
 }
 
+.feature{
 
-/*==========================
-Probability
-==========================*/
-
-.probability{
-
-    margin-top:25px;
-
-    text-align:left;
+display:flex;
+align-items:center;
+gap:20px;
+background:rgba(255,255,255,.12);
+padding:18px;
+border-radius:18px;
+backdrop-filter:blur(12px);
+transition:.3s;
 
 }
 
+.feature:hover{
+
+transform:translateX(8px);
+
+}
+
+.feature i{
+
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:white;
+color:#2563eb;
+font-size:24px;
+
+}
+
+.feature h3{
+
+margin-bottom:4px;
+
+}
+
+.feature p{
+
+margin:0;
+font-size:14px;
+opacity:.8;
+
+}
+
+.right-panel{
+
+display:flex;
+flex-direction:column;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.96);
+backdrop-filter:blur(25px);
+padding:35px;
+border-radius:30px;
+box-shadow:0 25px 70px rgba(0,0,0,.18);
+
+}
+
+.card-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+
+}
+
+.card-header h2{
+
+font-size:34px;
+color:#1e3a8a;
+
+}
+
+.card-header p{
+
+margin-top:6px;
+color:#666;
+
+}
+
+.security{
+
+background:#e8fff1;
+padding:12px 20px;
+border-radius:30px;
+color:#0f9d58;
+font-weight:600;
+
+}
+
+.security i{
+
+margin-right:8px;
+
+}
+.section-title{
+
+display:flex;
+align-items:center;
+gap:12px;
+font-size:24px;
+font-weight:600;
+color:#1e3a8a;
+margin:35px 0 25px;
+
+}
+
+.section-title i{
+
+width:45px;
+height:45px;
+background:#2563eb;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:22px;
+
+}
+
+.input-group{
+
+display:flex;
+flex-direction:column;
+position:relative;
+
+}
+
+.input-group label{
+
+font-size:15px;
+font-weight:600;
+margin-bottom:10px;
+color:#374151;
+display:flex;
+align-items:center;
+gap:10px;
+
+}
+
+.input-group label i{
+
+color:#2563eb;
+font-size:16px;
+
+}
+
+.input-group input,
+.input-group select{
+
+height:58px;
+padding:0 18px;
+border-radius:16px;
+border:2px solid #dbe4f0;
+font-size:16px;
+background:#f8fbff;
+transition:.35s;
+outline:none;
+
+}
+
+.input-group input::placeholder{
+
+color:#9ca3af;
+
+}
+
+.input-group input:hover,
+.input-group select:hover{
+
+border-color:#93c5fd;
+
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+border-color:#2563eb;
+background:#ffffff;
+box-shadow:0 0 0 5px rgba(37,99,235,.12);
+
+}
+
+.input-group select{
+
+cursor:pointer;
+
+}
+
+.input-group input[type=number]::-webkit-inner-spin-button,
+.input-group input[type=number]::-webkit-outer-spin-button{
+
+-webkit-appearance:none;
+margin:0;
+
+}
+
+.input-group input[type=number]{
+
+appearance:textfield;
+-moz-appearance:textfield;
+
+}
+
+.security-box{
+
+margin-top:35px;
+padding:22px;
+background:#eff8ff;
+border-left:6px solid #2563eb;
+border-radius:18px;
+display:flex;
+align-items:flex-start;
+gap:18px;
+
+}
+
+.security-box i{
+
+font-size:34px;
+color:#2563eb;
+
+}
+
+.security-box h4{
+
+color:#1e3a8a;
+margin-bottom:6px;
+
+}
+
+.security-box p{
+
+color:#555;
+line-height:1.7;
+
+}
+
+.button-area{
+
+margin-top:35px;
+display:flex;
+justify-content:center;
+
+}
+/* ===========================
+   Predict Button
+=========================== */
+
+.predict-btn{
+
+width:100%;
+height:65px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+color:#fff;
+font-size:20px;
+font-weight:600;
+cursor:pointer;
+transition:.35s;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+box-shadow:0 15px 35px rgba(37,99,235,.35);
+
+}
+
+.predict-btn:hover{
+
+transform:translateY(-4px);
+box-shadow:0 25px 45px rgba(37,99,235,.45);
+
+}
+
+.predict-btn:active{
+
+transform:scale(.98);
+
+}
+
+.predict-btn i{
+
+font-size:22px;
+
+}
+
+/* ===========================
+   Bottom Cards
+=========================== */
+
+.bottom-section{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:40px;
+
+}
+
+.info-card{
+
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.35s;
+text-align:center;
+
+}
+
+.info-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.info-card i{
+
+width:70px;
+height:70px;
+border-radius:50%;
+background:#edf4ff;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+font-size:28px;
+color:#2563eb;
+margin-bottom:20px;
+
+}
+
+.info-card h3{
+
+margin-bottom:10px;
+color:#1e3a8a;
+
+}
+
+.info-card p{
+
+color:#666;
+line-height:1.7;
+font-size:15px;
+
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+
+margin-top:40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-top:30px;
+border-top:1px solid #e5e7eb;
+
+}
+
+.footer-left h3{
+
+color:#1e3a8a;
+margin-bottom:8px;
+
+}
+
+.footer-left p{
+
+color:#666;
+
+}
+
+.footer-right{
+
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+
+}
+
+.footer-right span{
+
+background:#edf4ff;
+padding:12px 18px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+color:#2563eb;
+
+}
+
+.footer-right i{
+
+margin-right:8px;
+
+}
+
+/* ===========================
+   Loading Screen
+=========================== */
+
+#loader{
+
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(15,23,42,.88);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+
+}
+
+.loader-card{
+
+background:white;
+padding:45px;
+border-radius:25px;
+text-align:center;
+width:400px;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.loader-card h2{
+
+color:#1e3a8a;
+margin:20px 0 10px;
+
+}
+
+.loader-card p{
+
+color:#666;
+line-height:1.7;
+
+}
+
+.spinner{
+
+width:70px;
+height:70px;
+border:7px solid #dbeafe;
+border-top:7px solid #2563eb;
+border-radius:50%;
+margin:auto;
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+/* ==========================================
+   CREDIT CARD
+========================================== */
+
+.hero-card{
+
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:40px;
+
+}
+
+.credit-card{
+
+width:330px;
+height:200px;
+border-radius:22px;
+padding:30px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8,#0f172a);
+color:white;
+position:relative;
+overflow:hidden;
+box-shadow:0 30px 60px rgba(0,0,0,.35);
+transition:.5s;
+cursor:pointer;
+
+}
+
+.credit-card:hover{
+
+transform:rotateY(10deg) rotateX(8deg) scale(1.05);
+
+}
+
+.credit-card::before{
+
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:rgba(255,255,255,.08);
+border-radius:50%;
+top:-250px;
+right:-170px;
+
+}
+
+.credit-card::after{
+
+content:"";
+position:absolute;
+width:250px;
+height:250px;
+background:rgba(255,255,255,.05);
+border-radius:50%;
+bottom:-120px;
+left:-80px;
+
+}
+
+.credit-card h3{
+
+font-size:24px;
+margin-bottom:12px;
+letter-spacing:1px;
+
+}
+
+.credit-card p{
+
+font-size:15px;
+opacity:.9;
+
+}
+
+/* ==========================================
+   GLASS EFFECT
+========================================== */
+
+.card{
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+background:rgba(255,255,255,.95);
+
+border:1px solid rgba(255,255,255,.25);
+
+}
+
+/* ==========================================
+   FLOATING EFFECT
+========================================== */
+
+.card,
+.feature,
+.info-card{
+
+animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+0%{
+
+opacity:0;
+transform:translateY(35px);
+
+}
+
+100%{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================
+   INPUT ANIMATION
+========================================== */
+
+.input-group{
+
+transition:.3s;
+
+}
+
+.input-group:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* ==========================================
+   FEATURE CARD EFFECT
+========================================== */
+
+.feature{
+
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.feature:hover{
+
+background:rgba(255,255,255,.18);
+
+box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================
+   INFO CARD EFFECT
+========================================== */
+
+.info-card{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.info-card::before{
+
+content:"";
+
+position:absolute;
+
+left:-100%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.55),
+transparent
+);
+
+transition:.7s;
+
+}
+
+.info-card:hover::before{
+
+left:120%;
+
+}
+
+/* ==========================================
+   BUTTON SHINE
+========================================== */
+
+.predict-btn{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.predict-btn::before{
+
+content:"";
+
+position:absolute;
+
+left:-100%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.45),
+transparent
+);
+
+transition:.7s;
+
+}
+
+.predict-btn:hover::before{
+
+left:120%;
+
+}
+
+/* ==========================================
+   HEADER EFFECT
+========================================== */
+
+.card-header{
+
+padding-bottom:20px;
+
+border-bottom:1px solid #edf2f7;
+
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo i{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+background:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+color:#2563eb;
+
+box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.section-title{
+
+position:relative;
+
+padding-left:8px;
+
+}
+
+.section-title::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-10px;
+
+width:70px;
+
+height:4px;
+
+background:#2563eb;
+
+border-radius:10px;
+
+}
+/* ==========================================
+   SCROLL BAR
+========================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#2563eb;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#1d4ed8;
+
+}
+
+/* ==========================================
+   CARD HOVER
+========================================== */
+
+.card{
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 40px 80px rgba(0,0,0,.22);
+
+}
+
+/* ==========================================
+   INPUT ICON EFFECT
+========================================== */
+
+.input-group label i{
+
+transition:.3s;
+
+}
+
+.input-group:hover label i{
+
+transform:scale(1.2);
+
+color:#0f52ba;
+
+}
+
+/* ==========================================
+   INPUT EFFECT
+========================================== */
+
+.input-group input,
+.input-group select{
+
+transition:.35s;
+
+}
+
+.input-group:hover input,
+.input-group:hover select{
+
+background:#ffffff;
+
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+background:#e0f2fe;
+
+color:#0284c7;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-right:10px;
+
+margin-bottom:10px;
+
+}
+
+/* ==========================================
+   DASHBOARD STATS
+========================================== */
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:40px;
+
+}
+
+.stat-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stat-card i{
+
+font-size:35px;
+
+color:#2563eb;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-size:28px;
+
+color:#1e3a8a;
+
+margin-bottom:5px;
+
+}
+
+.stat-card p{
+
+color:#777;
+
+}
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+.progress-box{
+
+margin-top:25px;
+
+}
+
+.progress-title{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
 
 .progress{
 
-    width:100%;
+height:12px;
 
-    background:#ddd;
+background:#e5e7eb;
 
-    border-radius:25px;
+border-radius:20px;
 
-    overflow:hidden;
-
-    height:28px;
-
-    margin-top:8px;
+overflow:hidden;
 
 }
 
+.progress span{
 
-.progress-bar{
+display:block;
 
-    height:100%;
+height:100%;
 
-    color:white;
+background:linear-gradient(90deg,#2563eb,#06b6d4);
 
-    font-weight:bold;
+border-radius:20px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+animation:growBar 2s ease;
 
 }
 
+@keyframes growBar{
 
-.progress-bar.success{
+0%{
 
-    background:#28a745;
-
-}
-
-
-.progress-bar.danger{
-
-    background:#dc3545;
+width:0;
 
 }
 
+}
 
-/*==========================
-Text
-==========================*/
+/* ==========================================
+   FLOATING SHADOW
+========================================== */
 
-p{
+.hero-card{
 
-    margin-top:10px;
-
-    color:#444;
-
-    line-height:1.6;
+animation:floatCard 5s ease-in-out infinite;
 
 }
 
+@keyframes floatCard{
 
-h2{
+0%{
 
-    margin-bottom:10px;
+transform:translateY(0px);
 
 }
 
+50%{
 
-/*==========================
-Responsive
-==========================*/
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* ==========================================
+   BUTTON PULSE
+========================================== */
+
+.predict-btn{
+
+animation:pulse 2.5s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,.45);
+
+}
+
+70%{
+
+box-shadow:0 0 0 18px rgba(37,99,235,0);
+
+}
+
+100%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,0);
+
+}
+
+}
+
+/* ==========================================
+   SECURITY BOX
+========================================== */
+
+.security-box{
+
+transition:.35s;
+
+}
+
+.security-box:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================
+   FOOTER ICONS
+========================================== */
+
+.footer-right span{
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.footer-right span:hover{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+/* ==========================================
+   PAGE FADE
+========================================== */
+
+body{
+
+animation:pageLoad .8s ease;
+
+}
+
+@keyframes pageLoad{
+
+0%{
+
+opacity:0;
+
+}
+
+100%{
+
+opacity:1;
+
+}
+
+}
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+.main-container{
+
+grid-template-columns:1fr;
+gap:30px;
+
+}
+
+.left-panel{
+
+text-align:center;
+padding:20px;
+
+}
+
+.feature-box{
+
+max-width:700px;
+margin:auto;
+
+}
+
+.hero-card{
+
+margin-top:30px;
+
+}
+
+.credit-card{
+
+margin:auto;
+
+}
+
+.stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.bottom-section{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
 
 @media(max-width:768px){
 
-.container{
+body{
 
-    width:100%;
-
-    padding:25px;
+padding:20px;
 
 }
 
-.result-container{
+.card{
 
-    width:100%;
+padding:25px;
 
-    padding:25px;
-
-}
-
-.row{
-
-    flex-direction:column;
+border-radius:20px;
 
 }
 
-button{
+.card-header{
 
-    font-size:16px;
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
 
 }
+
+.card-header h2{
+
+font-size:28px;
+
+}
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.footer{
+
+flex-direction:column;
+text-align:center;
+gap:20px;
+
+}
+
+.footer-right{
+
+justify-content:center;
+
+}
+
+.predict-btn{
+
+font-size:18px;
+height:58px;
+
+}
+
+.credit-card{
+
+width:100%;
+max-width:320px;
+height:190px;
+
+}
+
+.left-panel h1{
+
+font-size:38px;
+
+}
+
+.left-panel p{
+
+font-size:16px;
+
+}
+
+.logo{
+
+justify-content:center;
+
+}
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+body{
+
+padding:12px;
+
+}
+
+.card{
+
+padding:18px;
+
+}
+
+.section-title{
+
+font-size:20px;
+
+}
+
+.card-header h2{
+
+font-size:24px;
+
+}
+
+.input-group input,
+.input-group select{
+
+height:52px;
+font-size:15px;
+
+}
+
+.predict-btn{
+
+height:55px;
+font-size:17px;
+
+}
+
+.feature{
+
+padding:14px;
+
+}
+
+.feature i{
+
+width:50px;
+height:50px;
+font-size:20px;
+
+}
+
+.credit-card{
+
+height:170px;
+padding:22px;
+
+}
+
+.credit-card h3{
+
+font-size:20px;
+
+}
+
+.credit-card p{
+
+font-size:13px;
+
+}
+
+.footer-left h3{
+
+font-size:18px;
+
+}
+
+.footer-left p{
+
+font-size:14px;
+
+}
+
+.footer-right span{
+
+padding:10px 15px;
+font-size:13px;
+
+}
+
+}
+
+/* ==========================================
+   INPUT PLACEHOLDER
+========================================== */
+
+::placeholder{
+
+color:#94a3b8;
+opacity:1;
+
+}
+
+/* ==========================================
+   SELECTION COLOR
+========================================== */
+
+::selection{
+
+background:#2563eb;
+color:white;
+
+}
+
+/* ==========================================
+   REMOVE BLUE TAP
+========================================== */
+
+*{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+/* ==========================================
+   SMOOTH SCROLL
+========================================== */
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+/* ==========================================
+   DISABLE IMAGE DRAG
+========================================== */
+
+img{
+
+user-select:none;
+-webkit-user-drag:none;
+
+}
+
+/* ==========================================
+   FINAL ANIMATION
+========================================== */
+
+.main-container{
+
+animation:slideIn .8s ease;
+
+}
+
+@keyframes slideIn{
+
+0%{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+100%{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/*=========================
+RESULT PAGE
+=========================*/
+
+.result-page{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+}
+
+.result-card{
+
+width:700px;
+
+background:white;
+
+padding:45px;
+
+border-radius:25px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+text-align:center;
+
+}
+
+.top{
+
+margin-bottom:30px;
+
+}
+
+.icon{
+
+width:110px;
+
+height:110px;
+
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+margin:auto;
+
+font-size:55px;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+.top h1{
+
+color:#1e3a8a;
+
+font-size:36px;
+
+margin-bottom:8px;
+
+}
+
+.top p{
+
+color:#666;
+
+}
+
+.status{
+
+padding:18px;
+
+border-radius:15px;
+
+font-size:24px;
+
+font-weight:700;
+
+margin:25px 0;
+
+}
+
+.approved{
+
+background:#e8fff0;
+
+color:#16a34a;
+
+}
+
+.rejected{
+
+background:#ffecec;
+
+color:#dc2626;
+
+}
+
+.error{
+
+background:#fff3cd;
+
+color:#b45309;
+
+}
+
+.message{
+
+font-size:17px;
+
+color:#555;
+
+line-height:1.8;
+
+margin-bottom:30px;
+
+}
+
+.progress-box{
+
+margin:25px 0;
+
+text-align:left;
+
+}
+
+.progress-title{
+
+display:flex;
+
+justify-content:space-between;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+}
+
+.progress{
+
+height:18px;
+
+background:#e5e7eb;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+
+border-radius:20px;
+
+transition:1.2s;
+
+}
+
+.success{
+
+background:linear-gradient(90deg,#16a34a,#22c55e);
+
+}
+
+.danger{
+
+background:linear-gradient(90deg,#ef4444,#dc2626);
+
+}
+
+.result-card .predict-btn{
+
+margin-top:35px;
 
 }
